@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import {
   FaChartLine,
   FaDollarSign,
@@ -26,18 +27,31 @@ const financeIcons = [
   { Icon: FaChartPie, color: "text-purple-400", size: 22 },
 ];
 
-// Precompute finance particle positions and delays
-const precomputedParticles = Array.from({ length: 8 }).map((_, i) => {
-  const { Icon, color, size } = financeIcons[i % financeIcons.length];
-  return {
-    id: i,
-    Icon,
-    color,
-    size,
-    left: `${Math.random() * 100}%`,
-    delay: Math.random() * 0.3,
-  };
-});
+const PrecomputedParticle = React.memo(({ Icon, color, size, left, delay }) => (
+  <motion.div
+    className={`finance-particle ${color} absolute`}
+    style={{
+      left,
+      top: "110%",
+      fontSize: size,
+      opacity: 0.35,
+      pointerEvents: "none",
+      userSelect: "none",
+      filter: "drop-shadow(0 0 1px rgba(0,0,0,0.3))",
+      zIndex: 0,
+    }}
+    animate={{ y: [-20, -400], opacity: [0.35, 0, 0.35] }}
+    transition={{
+      repeat: Infinity,
+      repeatType: "loop",
+      duration: 10 + Math.random() * 8,
+      delay,
+      ease: "linear",
+    }}
+  >
+    <Icon />
+  </motion.div>
+));
 
 const Hero = () => {
   // Lazy-load decorative visuals 900ms after mount to improve LCP
@@ -48,11 +62,42 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Memoize particles for stable references across renders
+  const precomputedParticles = useMemo(
+    () =>
+      Array.from({ length: 8 }).map((_, i) => {
+        const { Icon, color, size } = financeIcons[i % financeIcons.length];
+        return {
+          id: i,
+          Icon,
+          color,
+          size,
+          left: `${Math.random() * 100}%`,
+          delay: Math.random() * 0.3,
+        };
+      }),
+    []
+  );
+
   return (
     <section
       id="hero"
       className="relative min-h-screen pt-20 flex flex-col justify-center items-center overflow-hidden bg-gray-900 text-white"
     >
+      <Helmet>
+        <title>Smart Financial Solutions | Finx7</title>
+        <meta
+          name="description"
+          content="Finx7 offers smart financial solutions empowering individuals and businesses to grow wealth, manage risks, and secure a prosperous future."
+        />
+        <meta
+          name="keywords"
+          content="financial solutions, wealth management, business finance, investment advisory, corporate finance, financial planning, risk management"
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.finx7.com/" />
+      </Helmet>
+
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/50 z-10" />
 
@@ -144,31 +189,14 @@ const Hero = () => {
 
             {/* Finance icon particles floating */}
             {precomputedParticles.map((p) => (
-              <motion.div
+              <PrecomputedParticle
                 key={p.id}
-                className={`finance-particle ${p.color} absolute`}
-                style={{
-                  left: p.left,
-                  top: "110%",
-                  fontSize: p.size,
-                  opacity: 0.35,
-                  willChange: "transform, opacity",
-                  pointerEvents: "none",
-                  userSelect: "none",
-                  filter: "drop-shadow(0 0 1px rgba(0,0,0,0.3))",
-                  zIndex: 0,
-                }}
-                animate={{ y: [-20, -400], opacity: [0.35, 0, 0.35] }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 10 + Math.random() * 8,
-                  delay: p.delay,
-                  ease: "linear",
-                }}
-              >
-                <p.Icon />
-              </motion.div>
+                Icon={p.Icon}
+                color={p.color}
+                size={p.size}
+                left={p.left}
+                delay={p.delay}
+              />
             ))}
           </>
         )}

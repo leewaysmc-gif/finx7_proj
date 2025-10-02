@@ -10,23 +10,26 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gray-900 text-gray-300 pt-12 pb-6 overflow-hidden">
-      {/* Background Accent */}
-      <div className="absolute inset-x-0 top-0 h-2 bg-gradient-to-r from-orange-300  to-orange-300" />
+    <footer className="bg-gray-900 text-gray-300 pt-14 pb-8 relative">
+      {/* Accent Line */}
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-orange-300 to-orange-400" />
 
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 text-center sm:text-left">
         {/* Brand & Social */}
-        <div className="space-y-4">
-          <h4 className="text-xl font-bold text-white">MyWebsite</h4>
-          <p className="text-gray-400 text-sm">
-            Your financial partner for smarter solutions.
-          </p>
-          <div className="flex gap-4 mt-2">
+        <div className="flex flex-col items-center sm:items-start gap-6">
+          <div>
+            <h4 className="text-2xl font-bold text-white">Finx7</h4>
+            <p className="text-gray-400 text-sm leading-relaxed mt-2 max-w-xs mx-auto sm:mx-0">
+              Empowering smarter financial solutions for everyone.
+            </p>
+          </div>
+          <div className="flex justify-center sm:justify-start gap-4">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-gray-800 rounded-full hover:bg-facebook transition"
+              className="p-3 bg-gray-800 rounded-full hover:bg-blue-700 transition flex items-center justify-center"
+              aria-label="Facebook"
             >
               <FaFacebookF />
             </a>
@@ -34,7 +37,8 @@ const Footer = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-gray-800 rounded-full hover:bg-twitter transition"
+              className="p-3 bg-gray-800 rounded-full hover:bg-blue-400 transition flex items-center justify-center"
+              aria-label="Twitter"
             >
               <FaTwitter />
             </a>
@@ -42,7 +46,8 @@ const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-gray-800 rounded-full hover:bg-linkedin transition"
+              className="p-3 bg-gray-800 rounded-full hover:bg-blue-600 transition flex items-center justify-center"
+              aria-label="LinkedIn"
             >
               <FaLinkedinIn />
             </a>
@@ -50,7 +55,8 @@ const Footer = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-gray-800 rounded-full hover:bg-instagram transition"
+              className="p-3 bg-gray-800 rounded-full hover:bg-violet-900 transition flex items-center justify-center"
+              aria-label="Instagram"
             >
               <FaInstagram />
             </a>
@@ -58,94 +64,77 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div>
-          <h5 className="text-lg font-semibold text-white mb-4">Quick Links</h5>
-          <ul className="space-y-2 text-gray-400">
+        <div className="flex flex-col items-center sm:items-start gap-6">
+          <h5 className="text-lg font-semibold text-white">Quick Links</h5>
+          <ul className="flex flex-col space-y-3">
             <li>
-              <Link to="/" className="hover:text-white transition">
+              <Link to="/" className="hover:text-orange-300 transition">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-white transition">
+              <Link to="/services" className="hover:text-orange-300 transition">
                 Services
               </Link>
             </li>
             <li>
-              <Link to="/aboutus" className="hover:text-white transition">
-                About Us
+              <Link to="/aboutus" className="hover:text-orange-300 transition">
+                About
               </Link>
             </li>
             <li>
-              <Link to="/contactus" className="hover:text-white transition">
+              <Link to="/contactus" className="hover:text-orange-300 transition">
                 Contact
               </Link>
             </li>
             <li>
-              <Link to="/blogs" className="hover:text-white transition">
+              <Link to="/blogs" className="hover:text-orange-300 transition">
                 Blogs
               </Link>
             </li>
           </ul>
         </div>
 
-        {/* Resources */}
-        <div>
-          <h5 className="text-lg font-semibold text-white mb-4">Resources</h5>
-          <ul className="space-y-2 text-gray-400">
-            <li>
-              <a href="/privacy-policy" className="hover:text-white transition">
-                Privacy Policy
+        {/* Contact Info */}
+        <div className="flex flex-col items-center sm:items-start gap-6">
+          <div className="max-w-xs text-center sm:text-left">
+            <h5 className="text-lg font-semibold text-white">Contact Us</h5>
+            <p className="text-sm leading-relaxed mt-2">
+              Email:{" "}
+              <a
+                href="mailto:info@example.com"
+                className="hover:text-orange-400 transition"
+              >
+                info@example.com
               </a>
-            </li>
-            <li>
-              <a href="/terms-of-service" className="hover:text-white transition">
-                Terms of Service
+            </p>
+            <p className="text-sm leading-relaxed mt-1">
+              Phone:{" "}
+              <a
+                href="tel:+1234567890"
+                className="hover:text-orange-400 transition"
+              >
+                +1 234 567 890
               </a>
-            </li>
-            <li>
-              <a href="/faq" className="hover:text-white transition">
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a href="/support" className="hover:text-white transition">
-                Support
-              </a>
-            </li>
-          </ul>
-        </div>
+            </p>
+          </div>
 
-        {/* Contact Info & Back to Top */}
-        <div className="space-y-4">
-          <h5 className="text-lg font-semibold text-white mb-4">Contact Us</h5>
-          <p className="text-gray-400 text-sm">
-            Email:{" "}
-            <a
-              href="mailto:info@example.com"
-              className="hover:text-white transition"
-            >
-              info@example.com
-            </a>
-          </p>
-          <p className="text-gray-400 text-sm">
-            Phone:{" "}
-            <a href="tel:+1234567890" className="hover:text-white transition">
-              +1 234 567 890
-            </a>
-          </p>
+          {/* Back to Top Button */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="mt-4 inline-flex items-center gap-2 text-gray-400 hover:text-white transition"
+            onClick={() =>
+              window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+            className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gray-800 text-white cursor-pointer hover:bg-orange-300 hover:text-white transition text-sm font-medium"
+            aria-label="Back to Top"
           >
-            <FaArrowUp /> Back to Top
+            <FaArrowUp className="text-base" /> Back to Top
           </button>
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-        © 2025 MyWebsite. All Rights Reserved.
+      <div className="mt-14 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+        © 2025 Finx7. All Rights Reserved.
       </div>
     </footer>
   );
