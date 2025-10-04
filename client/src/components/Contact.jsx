@@ -71,7 +71,7 @@ const Contact = () => {
     data.append("_captcha", "false"); // disable formsubmit captcha
 
     try {
-      await fetch("https://formsubmit.co/c99b13a041fe3e8287b38c624babddab", {
+      await fetch("https://formsubmit.co", {
         method: "POST",
         body: data,
       });
