@@ -237,10 +237,11 @@ const Contact = () => {
             <div className="bg-gray-800 border border-gray-700 rounded-3xl p-8 space-y-6">
               <h3 className="text-2xl font-bold text-orange-300 mb-6">Get In Touch</h3>
 
-              <div className="space-y-6">
-                <ContactInfoItem Icon={HiMail} label="Email" value="info@example.com" href="mailto:info@example.com" />
-                <ContactInfoItem Icon={HiPhone} label="Phone" value="+1 234 567 890" href="tel:+1234567890" />
-                <ContactInfoItem Icon={HiLocationMarker} label="Location" value="New York, NY" />
+              <div className="space-y-6 text-start">
+                <ContactInfoItem Icon={HiMail} label="Email" value="connect@finx7.com" href="mailto:info@example.com" />
+                <ContactInfoItem Icon={HiPhone} label="Phone" value=" +91- 9654687526" href="tel:+1234567890" />
+                <ContactInfoItem Icon={HiLocationMarker} label="Location" value="462, Shakti Khand-4, Indirapuram, Ghaziabad, U.P.- 201014
+" />
               </div>
             </div>
 

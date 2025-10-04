@@ -105,7 +105,7 @@ const Footer = () => {
                 href="mailto:info@example.com"
                 className="hover:text-orange-400 transition"
               >
-                info@example.com
+                connect@finx7.com
               </a>
             </p>
             <p className="text-sm leading-relaxed mt-1">
@@ -114,7 +114,7 @@ const Footer = () => {
                 href="tel:+1234567890"
                 className="hover:text-orange-400 transition"
               >
-                +1 234 567 890
+                +91- 9654687526
               </a>
             </p>
           </div>

@@ -164,7 +164,7 @@ const BlogDetailsPage = () => {
       </Helmet>
 
       {/* Title */}
-      <h1 className="text-2xl md:text-5xl mt-8 md:mt-14 font-extrabold text-gray-900 mb-3 md:mb-4 leading-tight text-center px-2">
+      <h1 className="text-2xl text-start md:text-5xl mt-8 md:mt-14 font-extrabold text-gray-900 mb-3 md:mb-4 leading-tight text-center px-2">
         {blog.title}
       </h1>
 

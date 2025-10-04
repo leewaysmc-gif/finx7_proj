@@ -6,7 +6,7 @@ import logo from "../assets/logo.webp"; // Replace with your logo path
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = ["Services", "About Us", "ContactUs", "Blogs"];
+  const navItems = ["Services", "About Us", "Contact Us", "Blogs"];
 
   return (
     <nav className="fixed top-0 left-0 opacity-95 w-full bg-gradient-to-r bg-gray-950 shadow-lg z-50 font-sans">
@@ -15,8 +15,8 @@ function Navbar() {
         <Link to="/" className="flex items-center gap-3 group">
           <img
             src={logo}
-            alt="Logo"
-            className="h-12 w-auto rounded-xl transition-transform duration-300 group-hover:scale-110"
+            alt="Logo"zz
+            className="h-16 w-auto rounded-xl transition-transform duration-300 group-hover:scale-110"
           />
          
         </Link>

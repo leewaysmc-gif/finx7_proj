@@ -62,13 +62,9 @@ const AboutUs = () => {
           </h2>
 
           <p className="text-lg leading-relaxed text-gray-300 mb-6">
-            We are a passionate team dedicated to delivering{" "}
-            <span className="font-bold text-orange-300 bg-orange-300/10 px-2 py-1 rounded">
-              top-quality solutions
-            </span>{" "}
-            that empower businesses to thrive in a digital-first world. Our
-            mission is to create innovative, user-friendly, and scalable
-            solutions tailored to our clients' needs.
+            We are a committed team focused on delivering reliable financial solutions that enable businesses and individuals to grow with confidence. Our mission is to provide innovative, client-centric, and scalable financial services tailored to unique goals and challenges.
+With over a decade of expertise, we blend strategic insight with financial acumen to design solutions that drive stability, efficiency, and long-term value.
+            
           </p>
 
           <p className="text-lg leading-relaxed text-gray-300 mb-8">
@@ -83,13 +79,13 @@ const AboutUs = () => {
           <div className="flex gap-12 justify-start mb-8 flex-wrap">
             <div className="text-left">
               <h3 className="text-4xl font-black text-orange-300 mb-2 drop-shadow-md">
-                200+
+                100+
               </h3>
               <p className="text-gray-400 font-medium">Projects Delivered</p>
             </div>
             <div className="text-left">
               <h3 className="text-4xl font-black text-orange-300 mb-2 drop-shadow-md">
-                50+
+                40+
               </h3>
               <p className="text-gray-400 font-medium">Happy Clients</p>
             </div>
