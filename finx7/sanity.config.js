@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'finx7',
 
-  projectId: 'cqfqdjv2',
+  projectId: '3h3yanyt',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
