@@ -32,6 +32,7 @@ const Contact = () => {
   });
   const [errors, setErrors] = useState({});
   const [visualsReady, setVisualsReady] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisualsReady(true), 900);
@@ -49,18 +50,37 @@ const Contact = () => {
   const validateForm = () => {
     let tempErrors = {};
     if (!formData.name) tempErrors.name = "Name is required";
-    if (!formData.email) tempErrors.email = !/\S+@\S+\.\S+/.test(formData.email) ? "Email is invalid" : "";
+    if (!formData.email) {
+      tempErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      tempErrors.email = "Email is invalid";
+    }
     if (!formData.message) tempErrors.message = "Message cannot be empty";
     setErrors(tempErrors);
     return Object.values(tempErrors).every((err) => !err);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      alert("Message sent successfully!");
+    if (!validateForm()) return;
+
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("email", formData.email);
+    data.append("message", formData.message);
+    data.append("_captcha", "false"); // disable formsubmit captcha
+
+    try {
+      await fetch("https://formsubmit.co/c99b13a041fe3e8287b38c624babddab", {
+        method: "POST",
+        body: data,
+      });
+      setSuccess(true);
       setFormData({ name: "", email: "", message: "" });
       setErrors({});
+    } catch (error) {
+      console.error("Form submission error:", error);
+      // Optionally, you can handle and show an error message here
     }
   };
 
@@ -131,6 +151,7 @@ const Contact = () => {
                   }`}
                   aria-invalid={errors.name ? "true" : "false"}
                   aria-describedby={errors.name ? "name-error" : undefined}
+                  required
                 />
                 {errors.name && (
                   <span id="name-error" className="text-red-400 mt-2 text-sm flex items-center gap-1" role="alert">
@@ -155,6 +176,7 @@ const Contact = () => {
                   }`}
                   aria-invalid={errors.email ? "true" : "false"}
                   aria-describedby={errors.email ? "email-error" : undefined}
+                  required
                 />
                 {errors.email && (
                   <span id="email-error" className="text-red-400 mt-2 text-sm flex items-center gap-1" role="alert">
@@ -180,6 +202,7 @@ const Contact = () => {
                 }`}
                 aria-invalid={errors.message ? "true" : "false"}
                 aria-describedby={errors.message ? "message-error" : undefined}
+                required
               />
               {errors.message && (
                 <span id="message-error" className="text-red-400 mt-2 text-sm flex items-center gap-1" role="alert">
@@ -190,10 +213,23 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="relative w-full bg-gradient-to-r from-orange-300 via-yellow-400 to-orange-400 text-gray-900 font-bold text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-orange-300/50 hover:scale-[1.02] transform transition duration-300 border-2 border-orange-300/30"
+              className="relative w-full cursor-pointer bg-gradient-to-r from-orange-300 via-yellow-400 to-orange-400 text-gray-900 font-bold text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-orange-300/50 hover:scale-[1.02] transform transition duration-300 border-2 border-orange-300/30"
             >
               Send Message 🚀
             </button>
+
+            {success && (
+              <div className="mt-4 p-4 bg-green-600 text-white rounded-lg text-center relative" role="alert">
+                ✅ Your message has been sent successfully!
+                <button
+                  onClick={() => setSuccess(false)}
+                  className="absolute top-2 right-3 text-black font-bold hover:text-gray-200"
+                  aria-label="Close success message"
+                >
+                  ×
+                </button>
+              </div>
+            )}
           </form>
 
           {/* Contact Info */}
