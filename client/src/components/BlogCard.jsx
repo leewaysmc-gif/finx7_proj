@@ -37,12 +37,12 @@ const BlogCard = React.memo(({ blog }) => (
       )}
 
       {/* Title */}
-      <h3 className="font-semibold text-black text-sm sm:text-base line-clamp-2 mb-1">
+      <h3 className="font-semibold  text-black text-sm sm:text-base line-clamp-1  mb-1">
         {blog.title}
       </h3>
 
       {/* Excerpt */}
-      <p className="text-gray-300 text-xs sm:text-sm line-clamp-3 flex-grow">
+      <p className="text-gray-300 text-xs sm:text-sm line-clamp-1 flex-grow">
         {blog.excerpt}
       </p>
 

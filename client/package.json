@@ -15,6 +15,7 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^7.11.2",
     "@sanity/image-url": "^1.2.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/vite": "^4.1.12",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.541.0",
